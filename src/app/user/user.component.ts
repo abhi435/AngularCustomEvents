@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
   userGiftMsg = 'Gift not claimed yet!';
   userComment = 'Sample Message';
   userGiftName = '';
+  giftCount: number = 0;
   
   gifts = [{giftName: 'Toaster'}];
   
@@ -34,13 +35,6 @@ export class UserComponent implements OnInit {
     }
   }
 
-  onClaimGift() {
-    if (this.userGiftStatus) {
-      this.userGiftMsg = "Gift claimed. Thanks!";
-      this.userGiftClaimed = true;
-    }
-  }
-
   getStatusTextColor() {
     return this.userGiftClaimed ? 'green' : 'red'; 
   }
@@ -54,6 +48,11 @@ export class UserComponent implements OnInit {
     this.gifts.push({
       giftName: this.userGiftName
     });
+    
+  }
+
+  onGiftClaim (count) {
+    this.giftCount = count;
   }
   
 }
